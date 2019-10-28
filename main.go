@@ -32,10 +32,13 @@ func UpdateVersion(version string) (string, error) {
 			versions[i] = strconv.Itoa(number)
 			return strings.Join(versions, SeperateChar), nil
 		}
+		if i == 0 {
+			number++
+			versions[i] = strconv.Itoa(number)
+			break
+		}
 		number = 0
 		versions[i] = strconv.Itoa(number)
 	}
-	versions = append([]string{"1"}, versions...)
-	// another solution : return strings.Join("1"+versions, SeperateChar), nil
 	return strings.Join(versions, SeperateChar), nil
 }
